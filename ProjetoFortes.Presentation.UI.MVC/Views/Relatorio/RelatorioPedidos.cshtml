@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjetoFortes.Presentation.MVC.ViewModels.PedidoViewModel>
+
+@{
+    ViewBag.Title = "Relatório de Pedidos";
+}
+
+<h2>Listagem de Pedidos</h2>
+
+<p>
+ 
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FornecedorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantidadeProdutos)
+        </th>
+        <th>
+            R$ @Html.DisplayNameFor(model => model.ValorTotal)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornecedor.RazaoSocial)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeProdutos)
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                @Html.ActionLink("Exibir Relatório", "ExibirRelatorio", new { id = item.PedidoId })
+            </td>
+        </tr>
+    }
+
+</table>

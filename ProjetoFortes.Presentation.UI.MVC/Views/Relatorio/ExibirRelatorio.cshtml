@@ -1,0 +1,91 @@
+﻿@model ProjetoFortes.Presentation.MVC.ViewModels.PedidoViewModel
+
+@{
+    ViewBag.Title = "ExibirRelatorio";
+}
+
+<h2>Listagem de produtos</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornecedor.RazaoSocial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornecedor.RazaoSocial)
+        </dd>
+    </dl>
+</div>
+<div class="form-group">
+    <table class="table" id="produtos">
+        <tr>
+            <th>
+                Código do Produto
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Subtotal
+            </th>
+            <th></th>
+        </tr>
+
+        @if (Model.ItensPedido != null)
+        {
+            foreach (var item in Model.ItensPedido)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PedidoId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade)
+                    </td>
+                    <td>
+                        R$  @Html.DisplayFor(modelItem => item.Subtotal)
+                    </td>
+                    <td></td>
+                </tr>
+            }
+            <tr>
+                <td colspan="2">
+                    Totais
+                </td>
+                <td>
+                    @Model.ItensPedido.ToList().Sum(x => x.Quantidade)
+                </td>
+                <td>
+                   R$ @Model.ItensPedido.ToList().Sum(x => x.Subtotal)
+                </td>
+                <td></td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">
+                    Nenhum produto adicionado!
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        @Html.ActionLink("Voltar a lista", "RelatorioPedidos")
+    </p>
+</div>

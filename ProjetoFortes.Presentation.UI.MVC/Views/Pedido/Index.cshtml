@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ProjetoFortes.Presentation.MVC.ViewModels.PedidoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listagem</h2>
+
+<p>
+    @Html.ActionLink("Adicionar um registro", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FornecedorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantidadeProdutos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fornecedor.RazaoSocial)
+        </td>
+   
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantidadeProdutos)
+        </td>
+        <td>
+            R$ @Html.DisplayFor(modelItem => item.ValorTotal)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.PedidoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.PedidoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.PedidoId })
+        </td>
+    </tr>
+}
+
+</table>

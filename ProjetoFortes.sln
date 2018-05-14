@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2- ProjetoFortes.Application", "2- ProjetoFortes.Application", "{DDE6ED34-32B2-490B-ABAC-A5BF2F11ADBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3- ProjetoFortes.Domain", "3- ProjetoFortes.Domain", "{176BC963-8D27-4A91-AEA7-1F00E4E1B7B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4- ProjetoFortes.Infrastructure", "4- ProjetoFortes.Infrastructure", "{A1055941-4C77-4E36-8E81-5BC4D529B97A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoFortes.Domain", "ProjetoFortes.Domain\ProjetoFortes.Domain.csproj", "{2463A51B-D3E5-4AED-A6CE-AE101D689979}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoFortes.Infraestructure.CrossCutting.IoC", "ProjetoFortes.Infraestructure.CrossCutting.IoC\ProjetoFortes.Infraestructure.CrossCutting.IoC.csproj", "{14AE1A63-EDE0-43D7-BD82-6CB26F6896A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoFortes.Infraestructure.Data", "ProjetoFortes.Infraestructure.Data\ProjetoFortes.Infraestructure.Data.csproj", "{C2B88691-E337-43B3-A37F-B32A968ECA11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoFortes.Application", "ProjetoFortes.Application\ProjetoFortes.Application.csproj", "{31CE43A8-F46D-4094-9402-46244B32023B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 -ProjetoFortes.Presentation.UI.MVC", "1 -ProjetoFortes.Presentation.UI.MVC", "{516FC5FE-B3D4-4094-AB0E-24AC1587EA46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoFortes.Presentation.UI.MVC", "ProjetoFortes.Presentation.UI.MVC\ProjetoFortes.Presentation.UI.MVC.csproj", "{7F4F1686-DD2F-4E28-9F90-362E47D6F392}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2463A51B-D3E5-4AED-A6CE-AE101D689979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2463A51B-D3E5-4AED-A6CE-AE101D689979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2463A51B-D3E5-4AED-A6CE-AE101D689979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2463A51B-D3E5-4AED-A6CE-AE101D689979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14AE1A63-EDE0-43D7-BD82-6CB26F6896A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14AE1A63-EDE0-43D7-BD82-6CB26F6896A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14AE1A63-EDE0-43D7-BD82-6CB26F6896A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14AE1A63-EDE0-43D7-BD82-6CB26F6896A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2B88691-E337-43B3-A37F-B32A968ECA11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2B88691-E337-43B3-A37F-B32A968ECA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2B88691-E337-43B3-A37F-B32A968ECA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2B88691-E337-43B3-A37F-B32A968ECA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CE43A8-F46D-4094-9402-46244B32023B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CE43A8-F46D-4094-9402-46244B32023B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CE43A8-F46D-4094-9402-46244B32023B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CE43A8-F46D-4094-9402-46244B32023B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F4F1686-DD2F-4E28-9F90-362E47D6F392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4F1686-DD2F-4E28-9F90-362E47D6F392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4F1686-DD2F-4E28-9F90-362E47D6F392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4F1686-DD2F-4E28-9F90-362E47D6F392}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2463A51B-D3E5-4AED-A6CE-AE101D689979} = {176BC963-8D27-4A91-AEA7-1F00E4E1B7B6}
+		{14AE1A63-EDE0-43D7-BD82-6CB26F6896A2} = {A1055941-4C77-4E36-8E81-5BC4D529B97A}
+		{C2B88691-E337-43B3-A37F-B32A968ECA11} = {A1055941-4C77-4E36-8E81-5BC4D529B97A}
+		{31CE43A8-F46D-4094-9402-46244B32023B} = {DDE6ED34-32B2-490B-ABAC-A5BF2F11ADBA}
+		{7F4F1686-DD2F-4E28-9F90-362E47D6F392} = {516FC5FE-B3D4-4094-AB0E-24AC1587EA46}
+	EndGlobalSection
+EndGlobal
