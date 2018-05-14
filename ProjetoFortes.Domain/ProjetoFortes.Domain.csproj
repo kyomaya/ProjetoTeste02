@@ -38,15 +38,18 @@
     <Compile Include="Interface\IUntOfWork.cs" />
     <Compile Include="Interface\Repositories\IFornecedorRepository.cs" />
     <Compile Include="Interface\Repositories\IPedidoRepository.cs" />
+    <Compile Include="Interface\Repositories\IItensPedidoRepository.cs" />
     <Compile Include="Interface\Repositories\IProdutoRepository.cs" />
     <Compile Include="Interface\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interface\Services\IFornecedorService.cs" />
     <Compile Include="Interface\Services\IPedidoService.cs" />
+    <Compile Include="Interface\Services\IItensPedidoService.cs" />
     <Compile Include="Interface\Services\IProdutoService.cs" />
     <Compile Include="Interface\Services\IServicoBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FornecedorService.cs" />
     <Compile Include="Services\PedidoService.cs" />
+    <Compile Include="Services\ItensPedidoService.cs" />
     <Compile Include="Services\ProdutoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>

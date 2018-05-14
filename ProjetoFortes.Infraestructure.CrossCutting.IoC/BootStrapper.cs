@@ -23,6 +23,10 @@ namespace ProjetoFortes.Infraestructure.CrossCutting.IoC
             container.Register<IPedidoAppService, PedidoAppService>(Lifestyle.Scoped);
             container.Register<IPedidoRepository, PedidoRepository>(Lifestyle.Scoped);
             container.Register<IPedidoService, PedidoService>(Lifestyle.Scoped);
+
+            container.Register<IItensPedidoAppService, ItensPedidoAppService>(Lifestyle.Scoped);
+            container.Register<IItensPedidoRepository, ItensPedidoRepository>(Lifestyle.Scoped);
+            container.Register<IItensPedidoService, ItensPedidoService>(Lifestyle.Scoped);
         }
     }
 }

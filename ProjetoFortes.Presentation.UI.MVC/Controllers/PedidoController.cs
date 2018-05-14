@@ -14,16 +14,19 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
         private readonly IPedidoAppService _pedidoApp;
         private readonly IFornecedorAppService _fornecedorApp;
         private readonly IProdutoAppService _produtoApp;
+        private readonly IItensPedidoAppService _itensPedidoApp;
 
-        public PedidoController(IPedidoAppService pedidoApp, IFornecedorAppService fornecedorApp, IProdutoAppService produtoApp)
+        public PedidoController(IPedidoAppService pedidoApp, IFornecedorAppService fornecedorApp, IProdutoAppService produtoApp, IItensPedidoAppService itensPedidoApp)
         {
             _pedidoApp = pedidoApp;
             _fornecedorApp = fornecedorApp;
             _produtoApp = produtoApp;
+            _itensPedidoApp = itensPedidoApp;
         }
 
         public ActionResult Index()
         {
+            var itensPedido = Mapper.Map<IEnumerable<ItensPedidoViewModel>>(_itensPedidoApp.GetAll());
             var pedidoViewModel = Mapper.Map<IEnumerable<PedidoViewModel>>(_pedidoApp.GetAll());
             return View(pedidoViewModel);
         }
@@ -133,12 +136,18 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
         {
             try
             {
-                var Pedido = _pedidoApp.GetById(id);
-                _pedidoApp.Remove(Pedido);
+                var pedido = _pedidoApp.GetById(id);
+
+                foreach (var item in pedido.ItensPedido)
+                {
+                    _itensPedidoApp.Remove(item);
+                }
+               
+                _pedidoApp.Remove(pedido);
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }

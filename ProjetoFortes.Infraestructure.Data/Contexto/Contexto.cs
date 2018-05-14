@@ -18,6 +18,7 @@ namespace ProjetoFortes.Infraestrutura.Data
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<ItensPedido> ItensPedido { get; set; }
 
         protected override void Dispose(bool disposing)
         {

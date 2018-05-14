@@ -33,11 +33,13 @@
     <Compile Include="Interface\IAppServiceBase.cs" />
     <Compile Include="Interface\IFornecedorAppServices.cs" />
     <Compile Include="Interface\IPedidoAppServices.cs" />
+    <Compile Include="Interface\IItensPedidoAppServices.cs" />
     <Compile Include="Interface\IProdutoAppServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
     <Compile Include="Services\FornecedorAppService.cs" />
     <Compile Include="Services\PedidoAppService.cs" />
+    <Compile Include="Services\ItensPedidoAppService.cs" />
     <Compile Include="Services\ProdutoAppService.cs" />
   </ItemGroup>
   <ItemGroup>

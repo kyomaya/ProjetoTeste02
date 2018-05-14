@@ -11,11 +11,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.PedidoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PedidoId)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FornecedorId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FornecedorId)
+            @Html.DisplayFor(model => model.Fornecedor.RazaoSocial)
         </dd>
 
     </dl>
