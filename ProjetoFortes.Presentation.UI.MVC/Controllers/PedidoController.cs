@@ -81,11 +81,11 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
 
         public ActionResult Edit(int id)
         {
-            var Pedido = _pedidoApp.GetById(id);
-            var PedidoViewModel = Mapper.Map<Pedido, PedidoViewModel>(Pedido);
+            var pedido = _pedidoApp.GetById(id);
+            var pedidoViewModel = Mapper.Map<Pedido, PedidoViewModel>(pedido);
             ViewBag.Produtos = new SelectList(_produtoApp.GetAll(), "ProdutoId", "Descricao");
             ViewBag.Fornecedores = new SelectList(_fornecedorApp.GetAll(), "FornecedorId", "RazaoSocial");
-            return View(PedidoViewModel);
+            return View(pedidoViewModel);
         }
 
         [HttpPost]
@@ -104,6 +104,20 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
             var Pedido = _pedidoApp.GetById(pedidoViewModel.PedidoId);
             pedidoViewModel = Mapper.Map<Pedido, PedidoViewModel>(Pedido);
             return View(pedidoViewModel);
+        }
+
+
+        public ActionResult DeleteItemPedido(int idPedido, int idProduto)
+        {
+            var pedido = _pedidoApp.GetById(idPedido);
+            var itemARemover = pedido.ItensPedido.Where(x => x.ProdutoId == idProduto).FirstOrDefault();
+            if (itemARemover != null)
+            {
+                pedido.ItensPedido.Remove(itemARemover);
+                _pedidoApp.Update(pedido);
+            }
+            var pedidoViewModel = Mapper.Map<Pedido, PedidoViewModel>(pedido);
+            return RedirectToAction("Edit",new { id= pedido .PedidoId});
         }
 
         public ActionResult Delete(int id)
