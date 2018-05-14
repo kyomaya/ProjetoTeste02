@@ -24,11 +24,7 @@ namespace ProjetoFortes.Presentation.MVC.ViewModels
         public DateTime DataCadastro { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Valor")]
-        //[DataType(DataType.Currency,ErrorMessage ="Preencha o campo com um valor válido")]
-        //[Range(0,99999)]
         [DisplayName("Valor (R$)")]
         public decimal Valor { get; set; }
-
-        //public virtual IEnumerable<ItensPedidoViewModel> ItensPedido { get; set; }
     }
 }

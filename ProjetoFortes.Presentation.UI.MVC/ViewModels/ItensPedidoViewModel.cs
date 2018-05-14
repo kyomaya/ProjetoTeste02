@@ -30,7 +30,5 @@ namespace ProjetoFortes.Presentation.MVC.ViewModels
 
         [ScaffoldColumn(false)]
         public virtual int PedidoId { get; set; }
-
-        //public virtual IEnumerable<ProdutoViewModel> Produtos { get; set; }
     }
 }

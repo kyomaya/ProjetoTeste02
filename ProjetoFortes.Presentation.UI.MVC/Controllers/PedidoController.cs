@@ -26,7 +26,6 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
 
         public ActionResult Index()
         {
-            var itensPedido = Mapper.Map<IEnumerable<ItensPedidoViewModel>>(_itensPedidoApp.GetAll());
             var pedidoViewModel = Mapper.Map<IEnumerable<PedidoViewModel>>(_pedidoApp.GetAll());
             return View(pedidoViewModel);
         }
@@ -49,9 +48,12 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PedidoViewModel pedidoViewModel)
         {
+            Pedido pedido = null;
+
             if (ModelState.IsValid)
             {
-                var pedido = Mapper.Map<PedidoViewModel, Pedido>(pedidoViewModel);
+                pedido = Mapper.Map<PedidoViewModel, Pedido>(pedidoViewModel);
+
                 if (pedidoViewModel.ProdutoId != 0 && pedidoViewModel.QuantidadeProduto != 0)
                 {
                     var produtoAdicionado = _produtoApp.GetById(pedidoViewModel.ProdutoId);
@@ -62,6 +64,7 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
                         Quantidade = pedidoViewModel.QuantidadeProduto,
                         Subtotal = produtoAdicionado.Valor * pedidoViewModel.QuantidadeProduto
                     };
+
                     if (pedido.ItensPedido == null)
                         pedido.ItensPedido = new List<ItensPedido>();
 
@@ -71,15 +74,19 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
                     pedido.Codigo = _pedidoApp.GetAll().Count();
                     pedido.Data = DateTime.Today;
                     _pedidoApp.Add(pedido);
-                    pedido.ItensPedido.ToList()[0].Produto = produtoAdicionado;
-                    pedidoViewModel = Mapper.Map<Pedido, PedidoViewModel>(pedido);
-                    pedidoViewModel.PedidoId = pedido.PedidoId;
+                    // pedido.ItensPedido.ToList()[0].Produto = produtoAdicionado;
+                    //pedidoViewModel = Mapper.Map<Pedido, PedidoViewModel>(pedido);
+                    //pedidoViewModel.PedidoId = pedido.PedidoId;
                 }
-
             }
+
             ViewBag.Produtos = new SelectList(_produtoApp.GetAll(), "ProdutoId", "Descricao");
             ViewBag.Fornecedores = new SelectList(_fornecedorApp.GetAll(), "FornecedorId", "RazaoSocial");
-            return View(pedidoViewModel);
+
+            if (pedido != null)
+                return RedirectToAction("Edit", new { id = pedido.PedidoId });
+            else
+                return View();
         }
 
         public ActionResult Edit(int id)
@@ -93,19 +100,37 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PedidoViewModel pedidoViewModel, IEnumerable<ItensPedidoViewModel> itensPedido)
+        public ActionResult Edit(PedidoViewModel pedidoViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                var PedidoDomain = Mapper.Map<PedidoViewModel, Pedido>(pedidoViewModel);
-                _pedidoApp.Update(PedidoDomain);
+            Pedido pedido = null;
 
-                return RedirectToAction("Index");
+            if (pedidoViewModel.PedidoId!=0)
+            {
+                pedido = _pedidoApp.GetById(pedidoViewModel.PedidoId);
+                if (pedidoViewModel.ProdutoId != 0 && pedidoViewModel.QuantidadeProduto != 0)
+                {
+                    var produtoAdicionado = _produtoApp.GetById(pedidoViewModel.ProdutoId);
+                    var itemPedidoNovo = new ItensPedido
+                    {
+                        ProdutoId = produtoAdicionado.ProdutoId,
+                        Quantidade = pedidoViewModel.QuantidadeProduto,
+                        Subtotal = produtoAdicionado.Valor * pedidoViewModel.QuantidadeProduto
+                    };
+
+                    pedido.ItensPedido.Add(itemPedidoNovo);
+                    pedido.QuantidadeProdutos = pedido.ItensPedido.Count;
+                    pedido.ValorTotal = pedido.ItensPedido.Sum(x => x.Subtotal);
+                }
+
+                pedido.FornecedorId = pedidoViewModel.FornecedorId;
+                _pedidoApp.Update(pedido);
+
+                return RedirectToAction("Index", pedidoViewModel);
             }
+
             ViewBag.Produtos = new SelectList(_produtoApp.GetAll(), "ProdutoId", "Descricao");
             ViewBag.Fornecedores = new SelectList(_fornecedorApp.GetAll(), "FornecedorId", "RazaoSocial");
-            var Pedido = _pedidoApp.GetById(pedidoViewModel.PedidoId);
-            pedidoViewModel = Mapper.Map<Pedido, PedidoViewModel>(Pedido);
+            
             return View(pedidoViewModel);
         }
 
@@ -114,13 +139,14 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
         {
             var pedido = _pedidoApp.GetById(idPedido);
             var itemARemover = pedido.ItensPedido.Where(x => x.ProdutoId == idProduto).FirstOrDefault();
+
             if (itemARemover != null)
             {
                 pedido.ItensPedido.Remove(itemARemover);
                 _pedidoApp.Update(pedido);
             }
-            var pedidoViewModel = Mapper.Map<Pedido, PedidoViewModel>(pedido);
-            return RedirectToAction("Edit",new { id= pedido .PedidoId});
+
+            return RedirectToAction("Edit", new { id = pedido.PedidoId });
         }
 
         public ActionResult Delete(int id)
@@ -142,7 +168,7 @@ namespace ProjetoFortes.Presentation.MVC.Controllers
                 {
                     _itensPedidoApp.Remove(item);
                 }
-               
+
                 _pedidoApp.Remove(pedido);
 
                 return RedirectToAction("Index");

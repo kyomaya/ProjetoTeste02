@@ -1,6 +1,7 @@
 ﻿using ProjetoFortes.Domain.Interface.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 
@@ -33,6 +34,12 @@ namespace ProjetoFortes.Infraestrutura.Data.Repositories
 
         public void Remove(TEntity obj)
         {
+            var e = contexto.Entry(obj);
+            if (e.State == EntityState.Detached)
+            {
+                contexto.Set<TEntity>().Attach(obj);
+            }
+            contexto.Entry(obj).State = EntityState.Deleted;
             contexto.Set<TEntity>().Remove(obj);
             contexto.SaveChanges();
         }

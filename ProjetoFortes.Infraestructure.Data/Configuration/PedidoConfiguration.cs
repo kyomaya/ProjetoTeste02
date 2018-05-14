@@ -25,17 +25,6 @@ namespace ProjetoFortes.Infraestrutura.Dados.Configuration
                 .WithMany()
                 .HasForeignKey(t => t.FornecedorId);
 
-            //this.HasMany(t => t.Produtos)
-            //    .WithMany(t => t.Pedidos)
-            //    .Map(
-            //        m =>
-            //        {
-            //            m.ToTable("ProdutosPedido");
-            //            m.MapLeftKey("PedidoId");
-            //            m.MapRightKey("ProdutoId");  
-            //        }
-            //        );
-
             this.ToTable("Pedidos", "dbo");
         }
     }

@@ -16,28 +16,10 @@ namespace ProjetoFortes.Infraestrutura.Dados.Configuration
                 .IsRequired();
 
             this.Property(t => t.PedidoId)
-                .IsRequired();
+                .IsOptional();
 
             this.Property(t => t.ProdutoId)
-                .IsRequired();
-
-            //this.HasRequired(t => t.Produto)
-            //    .WithMany()
-            //    .HasForeignKey(t => t.ProdutoId);
-
-            //this.HasRequired(t => t.Pedido)
-            //    .WithMany()
-            //    .HasForeignKey(t => t.PedidoId);
-
-
-            //this.HasMany(t => t.Produtos)
-            //    .WithMany(t => t.Pedidos)
-            //    .Map(
-            //        m => m.ToTable("ProdutosPedido")
-            //        .MapLeftKey("PedidoId")
-            //        .MapRightKey("ProdutoId")
-
-            //        );
+                .IsOptional();
 
             this.ToTable("ItensPedido", "dbo");
         }

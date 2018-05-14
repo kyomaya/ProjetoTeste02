@@ -47,7 +47,6 @@
     <Compile Include="Configuration\ItensPedidoConfiguration.cs" />
     <Compile Include="Configuration\PedidoConfiguration.cs" />
     <Compile Include="Configuration\ProdutoConfiguration.cs" />
-    <Compile Include="Configuration\RepositoryManager.cs" />
     <Compile Include="Contexto\Contexto.cs" />
     <Compile Include="Initializer\DbInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />

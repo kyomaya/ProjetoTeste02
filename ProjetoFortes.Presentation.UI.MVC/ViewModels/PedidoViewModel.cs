@@ -31,7 +31,9 @@ namespace ProjetoFortes.Presentation.MVC.ViewModels
         [ScaffoldColumn(false)]
         public decimal ValorTotal { get; set; }
 
+        [ScaffoldColumn(false)]
         public int ProdutoId { get; set; }
+        [ScaffoldColumn(false)]
         public int QuantidadeProduto { get; set; }
 
         public virtual IEnumerable<ItensPedidoViewModel> ItensPedido { get; set; }

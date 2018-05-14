@@ -30,14 +30,6 @@ namespace ProjetoFortes.Presentation.UI.MVC.AutoMapper
               .ForMember(vm => vm.Fornecedor, map => map.MapFrom(m => m.Fornecedor))
               .ForMember(vm => vm.ItensPedido, map => map.MapFrom(m => m.ItensPedido))
               .ForMember(vm => vm.ValorTotal, map => map.MapFrom(m => m.ValorTotal))
-              //.ForMember(vm => vm.ValorTotal, map => map.ResolveUsing(b =>
-              // {
-              //     if (b.FornecedorId.Equals(0))
-              //     {
-              //         return b.FornecedorId;
-              //     }
-              //     return b.FornecedorId;
-              // }))
               .ForMember(vm => vm.Data, map => map.MapFrom(m => m.Data))
               .ForMember(m => m.ProdutoId, map => map.Ignore())
               .ForMember(m => m.QuantidadeProduto, map => map.Ignore());

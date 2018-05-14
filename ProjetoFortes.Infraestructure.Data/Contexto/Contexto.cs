@@ -13,6 +13,8 @@ namespace ProjetoFortes.Infraestrutura.Data
             : base("stringConexao")
         {
             var sqlProviderServices = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
+            if (sqlProviderServices == null)
+                throw new Exception("Necessario");
         }
 
         public DbSet<Fornecedor> Fornecedores { get; set; }

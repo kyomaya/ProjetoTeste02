@@ -21,7 +21,7 @@ namespace ProjetoFortes.Presentation.MVC.App_Start
 
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
             container.Verify();
-            //GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorDependencyResolver(container);
+
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
 

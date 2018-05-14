@@ -76,26 +76,12 @@ namespace ProjetoFortes.Infraestructure.Data.Initializer
                 {
                     Codigo=1,
                     Data=new System.DateTime(2018,05,12),
-                    //Fornecedor=GetFornecedores()[0],
                     FornecedorId=1,
                     PedidoId=1,
                     ItensPedido=GetItensPedido1(),
                     QuantidadeProdutos=GetItensPedido1().Count,
                     ValorTotal = GetItensPedido1().Sum(x=>x.Subtotal)
-                }
-                //,
-                //new Pedido
-                //{
-                //    Codigo=2,
-                //    Data=new System.DateTime(2018,05,12),
-                //    //Fornecedor=GetFornecedores()[0],
-                //    FornecedorId=2,
-                //    //PedidoId=2,
-                //    ItensPedido=GetItensPedido2(),
-                //    QuantidadeProdutos=GetItensPedido2().Count,
-                //    ValorTotal = GetItensPedido2().Sum(x=>x.Subtotal)
-                //}
-                 
+                }                 
             };
             return pedidos;
         }
@@ -107,20 +93,14 @@ namespace ProjetoFortes.Infraestructure.Data.Initializer
             {
                 new ItensPedido
                 {
-                    //ItensPedidoId=1,
-                    //Pedido= GetPedidos()[0],
                     PedidoId=1,
-                    //Produto= GetProdutos()[0],
                     ProdutoId=1,
                     Quantidade=1,
                     Subtotal= GetProdutos()[0].Valor
                 },
                   new ItensPedido
                 {
-                    //ItensPedidoId=2,
-                    //Pedido= GetPedidos()[0],
                     PedidoId=1,
-                    //Produto= GetProdutos()[1],
                     ProdutoId=2,
                     Quantidade=1,
                     Subtotal= GetProdutos()[1].Valor
@@ -136,20 +116,14 @@ namespace ProjetoFortes.Infraestructure.Data.Initializer
             {
                 new ItensPedido
                 {
-                    //ItensPedidoId=1,
-                    //Pedido= GetPedidos()[0],
                     PedidoId=2,
-                    //Produto= GetProdutos()[0],
                     ProdutoId=1,
                     Quantidade=1,
                     Subtotal= GetProdutos()[0].Valor
                 },
                   new ItensPedido
                 {
-                    //ItensPedidoId=2,
-                    //Pedido= GetPedidos()[0],
                     PedidoId=2,
-                    //Produto= GetProdutos()[1],
                     ProdutoId=2,
                     Quantidade=1,
                     Subtotal= GetProdutos()[2].Valor
